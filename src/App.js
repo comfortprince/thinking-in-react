@@ -1,25 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import FilterableProductTable from './components/FilterableProductTable.js'
 
-export default App;
+export default function App() {
+  const productData = [
+    { id: 1, category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+    { id: 2, category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+    { id: 3, category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+    { id: 4, category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+    { id: 5, category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+    { id: 6, category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
+  ]
+
+  return (
+    <main
+      style={{
+        width: '15rem',
+        border: '1px solid gray',
+        margin: '1rem'
+      }}
+    >
+      <FilterableProductTable products={productData}/>
+    </main>
+  ) ;
+}
