@@ -30,7 +30,7 @@ function ProductRow({product}) {
 	)
 }
 
-export default function ProductTable({products}) {
+export default function ProductTable({products, filterText, inStockOnly}) {
 	const categories = getCategories(products)
 	const tableRows = []
 
@@ -39,7 +39,14 @@ export default function ProductTable({products}) {
 		const productsInCategory = fiterByCategory(products, category)
 
 		tableRows.push( <ProductCategoryRow key={category} category={category}/> )
+		let j = 0
 		productsInCategory.forEach((product) => {
+			if (!product.name.toLowerCase().includes(filterText.toLowerCase()))
+		      return
+
+		  	if(inStockOnly && !product.stocked)
+		  		return
+
 			tableRows.push( <ProductRow key={product.id} product={product} /> )
 		})
 	}

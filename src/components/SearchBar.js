@@ -1,4 +1,4 @@
-export default function SearchBar() {
+export default function SearchBar({filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange}) {
 	return (
 		<div 
 			style={{
@@ -9,10 +9,14 @@ export default function SearchBar() {
 			}}
 		>
 			<div>
-				<input type="search" placeholder="Search..."/>
+				<input 
+					type="search" 
+					placeholder="Search..."
+					value={filterText}
+					onChange={(e) => {onFilterTextChange(e.target.value)}}/>
 			</div>
 			<div>
-				<input type="checkbox"/>
+				<input type="checkbox" onChange={(e) => {onInStockOnlyChange(e.target.checked)}}/>
 				<span>
 					Only show products in stock
 				</span>
